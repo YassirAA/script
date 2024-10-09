@@ -21,5 +21,11 @@ SSTCPU=$(($HHCPU * 3600 + $MMCPU * 60 + $SSCPU))
 
 #Calcular Elapse Time
 
-MME
-SSE
+MME=$(echo $ETIME | cut -d ":" -f1)
+SSE=$(echo $ETIME | cut -d ":" -f2)
+
+SSET=$(($MME * 60 + $SSE))
+
+#Average time
+AVG=$((100 * $SSTCPU / $SSET))
+echo "Average CPU usage in PID $PID in the last $ETIME is $AVG%"
