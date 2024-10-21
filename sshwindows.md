@@ -9,7 +9,7 @@ aws ec2 run-instances --image-id "ami-05f283f34603d6aed" --instance-type "t2.mic
 ## Connect to RDP
 Now we need to connect to our windwos with rdp
 
-First we are going to our instance and click on connect, then we get our .pem key and decipher on the show password RDP option
+First we are going to our instance and click on connect, then we get our .pem key and decipher on the show password RDP option (j!WQ=AqD5s1N&CO4.!*(aVf?vXNfCmdH)
 ![Captura de pantalla 2024-10-21 205206](https://github.com/user-attachments/assets/1e2014bf-450a-4c8e-b5b6-34b85a565371)
 
 We can download our rdp file and execute it, it would ask us the password and we put the one that gave us the .pem file
