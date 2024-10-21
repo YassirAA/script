@@ -21,9 +21,11 @@ do
 		echo El fitxer no existeix
 	elif [ $FILESIZE -gt $MAX ]
 	then
+		ARRAYFILE=$((echo $FILE $FILESIZE-$MAX))
 		echo El fixer es sobrepasa $(($FILESIZE-$MAX)) del limit
 	fi
 
 #shift per agafar el seguent valor del bucle
 	shift
 done
+echo $ARRAYFILE
