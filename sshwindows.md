@@ -18,5 +18,5 @@ We can download our rdp file and execute it, it would ask us the password and we
 And that's it we connected
 ![image](https://github.com/user-attachments/assets/3e5bdfc0-8bf7-47fb-80dc-b0ee08280578)
 
-##Configure SSH
-Now that we are comnnected we can start configuring our
+## Configure SSH
+Now we need to firstly install ssh in our windwows
