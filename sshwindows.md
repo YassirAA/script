@@ -20,3 +20,12 @@ And that's it we connected
 
 ## Configure SSH
 Now we need to firstly install ssh in our windwows
+Instalem el ssh-server
+```powershell
+Add-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0
+```
+Activem el servei
+```powershell
+Get-Service sshd
+Get-Service ssh-agent
+```
