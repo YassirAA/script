@@ -56,9 +56,20 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDcviAEIlMpYZ2oB1Mv1KqwlACbyiZdG4JjcTrT0WdF
 ```
 And create this structure in the windwos
 ```
-/.ssh/authorized_keys
+\.ssh\authorized_keys
 ```
 ![image](https://github.com/user-attachments/assets/b9eda21a-51c0-4e7c-88b3-e0a8724cb89d)
 
+Now we do the same to the configuration file Windows 
+```
+C:\programdata\ssh\administrator_authorized_keys
+```
+![image](https://github.com/user-attachments/assets/2bf20761-2523-4b4e-890c-ab4ed5b7b4a4)
 
+Ara modificarem els permisos amb la seguent linea de comandas
+``` powershell
+icacls $env.USERPROFILE\.ssh /inheritance:r
+icacls $env.USERPROFILE\.ssh /grant "$($env:USERNAME):(OI)(CI)F"
+icacls $env.USERPROFILE\.ssh\authorized_keys /grant "$($env:USERNAME):F"
+```
 
