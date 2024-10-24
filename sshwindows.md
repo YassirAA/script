@@ -7,10 +7,12 @@ yPIvLux*D-KRxs-X4(Q$U0HUk)JGEtoe
 First we need to create the virtual machine in aws, is going to be a windwos command mode.
 
 
-This is the configuration code
+This is the script
 ```bash
 aws ec2 run-instances --image-id "ami-05f283f34603d6aed" --instance-type "t2.micro" --key-name "vockey" --network-interfaces '{"AssociatePublicIpAddress":true,"DeviceIndex":0,"Groups":["sg-043cafb8fe8705658"]}' --credit-specification '{"CpuCredits":"standard"}' --metadata-options '{"HttpEndpoint":"enabled","HttpPutResponseHopLimit":2,"HttpTokens":"required"}' --private-dns-name-options '{"HostnameType":"ip-name","EnableResourceNameDnsARecord":true,"EnableResourceNameDnsAAAARecord":false}' --count "1"
 ```
+
+
 ## Connect to RDP
 Now we need to connect to our windwos with rdp
 
@@ -22,6 +24,7 @@ We can download our rdp file and execute it, it would ask us the password and we
 
 And that's it we connected
 ![image](https://github.com/user-attachments/assets/3e5bdfc0-8bf7-47fb-80dc-b0ee08280578)
+
 
 ## Configure SSH
 Now we need to firstly install ssh in our windwows
@@ -82,4 +85,7 @@ Finally we can go to our Linux and execute
 ```
 ssh Administrator@"ipserver"
 ```
+And it works
+![image](https://github.com/user-attachments/assets/bdaf05cf-b1e3-4071-b5aa-edb57f7250b3)
+
 
