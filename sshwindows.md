@@ -71,10 +71,15 @@ C:\programdata\ssh\administrator_authorized_keys
 ```
 ![image](https://github.com/user-attachments/assets/2bf20761-2523-4b4e-890c-ab4ed5b7b4a4)
 
-Ara modificarem els permisos amb la seguent linea de comandas
+Now we modify the right of the user
 ``` powershell
 icacls $env.USERPROFILE\.ssh /inheritance:r
 icacls $env.USERPROFILE\.ssh /grant "$($env:USERNAME):(OI)(CI)F"
 icacls $env.USERPROFILE\.ssh\authorized_keys /grant "$($env:USERNAME):F"
+```
+
+Finally we can go to our Linux and execute
+```
+ssh Administrator@"ipserver"
 ```
 
