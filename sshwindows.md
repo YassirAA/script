@@ -82,10 +82,19 @@ icacls $env.USERPROFILE\.ssh\authorized_keys /grant "$($env:USERNAME):F"
 ```
 
 Finally we can go to our Linux and execute
-```
+``` bash
 ssh Administrator@"ipserver"
 ```
 And it works
 ![image](https://github.com/user-attachments/assets/bdaf05cf-b1e3-4071-b5aa-edb57f7250b3)
 
+# Create Forest
+``` powershell
+# Instalar AD
+Install-WindowsFeature AD-Domain-Services -IncludeManagementTools
+Import-Module ADDSDeployment
+
+# Elevar servidor a Controlador de Domini (Es reinicia, trobar manera que no es reinicii/evaluar si es problematic)
+Install-ADDSForest -DomainName "daidan.local" -DomainNetbiosName "WindowsServer22" -SafeModeAdministratorPassword (ConvertTo-SecureString -AsPlainText "Patata123." -Force) -InstallDns -Force
+```
 
