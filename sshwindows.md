@@ -98,3 +98,12 @@ Import-Module ADDSDeployment
 Install-ADDSForest -DomainName "daidan.local" -DomainNetbiosName "WindowsServer22" -SafeModeAdministratorPassword (ConvertTo-SecureString -AsPlainText "Patata123." -Force) -InstallDns -Force
 ```
 
+# Script Security Group
+``` bash
+aws ec2 run-instances --image-id "ami-064519b8c76274859" --instance-type "t2.micro" --network-interfaces '{"AssociatePublicIpAddress":true,"DeviceIndex":0}' --credit-specification '{"CpuCredits":"standard"}' --metadata-options '{"HttpEndpoint":"enabled","HttpPutResponseHopLimit":2,"HttpTokens":"required"}' --private-dns-name-options '{"HostnameType":"ip-name","EnableResourceNameDnsARecord":true,"EnableResourceNameDnsAAAARecord":false}' --count "1" 
+```
+Ara configurarem el aws cli a poweshell
+Primer instalem cli
+``` powershell
+msiexec.exe /i https://awscli.amazonaws.com/AWSCLIV2.msi
+```
