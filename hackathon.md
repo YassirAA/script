@@ -18,7 +18,9 @@ Primer fem
   aws configure
   ```
 Despres posem el que ens demana que serien les claus i la regio en la que estem 
+
 ![image](https://github.com/user-attachments/assets/abbaeda0-5ba7-44d9-9557-060a49dced3f)
+
 ![image](https://github.com/user-attachments/assets/df8e3f7b-78f7-4290-83fe-113b9c05639c)
 
 Despress tornem a copiar les claus al fitxer .aws/credentials
