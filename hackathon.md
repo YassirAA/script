@@ -1,1 +1,4 @@
+# HACKATHON
 
+## PREPARACIO
+  ### AWSCLI
