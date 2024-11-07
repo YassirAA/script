@@ -88,4 +88,5 @@ do
 done
 ```
 Ara verificarem si ens guarda aquestas dades
+
 ![image](https://github.com/user-attachments/assets/00d8c2b4-b85f-4fe1-aea3-b2914519c0db)
