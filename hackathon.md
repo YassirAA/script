@@ -42,4 +42,18 @@ Com es pot veure te la mateixa ip que la informacio del nostre script
 
 ![image](https://github.com/user-attachments/assets/d0fcfaf2-b00f-42f2-a2c0-a9faab8ad94a)
 
+## Creacio Script
+
+  ``` bash
+    #! /bin/sh
+    
+    DOMAINNAME=$1
+    
+    #Verifiquem que el client no ha posat mes de 10 usuaris
+    
+    if [ $# -gt 11 ];then
+            echo "El nombre d'usuaris ha de ser menys de 10"
+            exit 1
+    fi
+  ```
 
