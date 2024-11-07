@@ -57,3 +57,33 @@ Com es pot veure te la mateixa ip que la informacio del nostre script
     fi
   ```
 
+Execucio
+
+![image](https://github.com/user-attachments/assets/a88d2922-9102-47c9-96e6-82964fb00a3b)
+
+``` bash
+#! /bin/sh
+
+DOMAINNAME=$1
+
+#Verifiquem que el client no ha posat mes de 10 usuaris
+
+if [ $# -gt 11 ];then
+        echo "El nombre d'usuaris ha de ser menys de 10"
+        exit 1
+fi
+
+shift
+
+#Ens guardem les variables de usuari i contrasenya 
+
+while [ $# -gt 0 ]
+do
+        USER=$(echo $1 | cut -d "," -f1)
+        PSWD=$(echo $1 | cut -d "," -f2)
+
+        echo $USER,$PSWD
+
+        shift
+done
+```
