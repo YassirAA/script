@@ -90,3 +90,57 @@ done
 Ara verificarem si ens guarda aquestas dades
 
 ![image](https://github.com/user-attachments/assets/00d8c2b4-b85f-4fe1-aea3-b2914519c0db)
+
+Hem actualitzat l'script posant la creacio de la nostre maquina de windows i posant el seu grup  de seguretat i un nom 
+``` bash
+#! /bin/sh
+
+# Definir variables
+INSTANCE_TYPE="t2.micro"
+AMI_ID="ami-05f283f34603d6aed"  # ID de la imatge Windows
+KEY_NAME="vockey"
+SECURITY_GROUP="sg-0f848561bd738058b"  # ID del grup de seguretat
+
+# Llançar una nova instància
+aws ec2 run-instances \
+    --image-id $AMI_ID \
+    --count 1 \
+    --instance-type $INSTANCE_TYPE \
+    --key-name $KEY_NAME \
+    --security-group-ids $SECURITY_GROUP \
+    --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=WindowsServer}]'
+
+
+
+
+DOMAINNAME=$1
+
+#Verifiquem que el client no ha posat mes de 10 usuaris
+
+if [ $# -gt 11 ];then
+        echo "El nombre d'usuaris ha de ser menys de 10"
+        exit 1
+fi
+
+#Script creacio maquina active directory amb el DOMAINNAME
+#aws ec2 run-instances --image-id "ami-064519b8c76274859" --instance-type "t2.micro" --key-name "vockey" --network-interfaces '{"AssociatePublicIpAddress":true,"DeviceIndex":0,"Groups":["sg-0f848561bd738058b"]}>
+
+#aws ec2 run-instances --image-id "ami-064519b8c76274859" --instance-type "t2.micro" --key-name "vockey" --network-interfaces '{"AssociatePublicIpAddress":true,"DeviceIndex":0,"Groups":["sg-0f848561bd738058b"]}>
+
+shift
+
+#Ens guardem les variables de usuari i contrasenya 
+
+while [ $# -gt 0 ]
+do
+        USER=$(echo $1 | cut -d "," -f1)
+        PSWD=$(echo $1 | cut -d "," -f2)
+
+#Crearem la maquina aqui en un futur
+
+        echo $USER $PSWD
+
+        shift
+done
+
+```
