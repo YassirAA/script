@@ -144,3 +144,5 @@ do
 done
 
 ```
+
+Ara el script ens fa primer el nostre windwos el seguent sera crear un debian amb els usuaris i contrasenyas que ens hem guardat del usuari
