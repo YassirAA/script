@@ -145,4 +145,61 @@ done
 
 ```
 
-Ara el script ens fa primer el nostre windwos el seguent sera crear un debian amb els usuaris i contrasenyas que ens hem guardat del usuari
+Hem avançat en la creaccio del grup de seguretat i aconseguir crearlo adjuntanment amb la maquina virtual i posar el grup de seguretat a la maquina virtual
+De moment tenim 3 reglas de ports oberts, el port de ssh(22), el port 80 de HTTP i el RDP(3389)
+``` bash
+! /bin/sh
+
+#Crear security group 
+SECURITY_GROUP_ID=$(aws ec2 create-security-group --group-name "security-group" --description "Seguridad para hackathon" --query 'GroupId' --output text)
+
+
+# Añadir reglas de acceso al grupo de seguridad
+aws ec2 authorize-security-group-ingress --group-id $SECURITY_GROUP_ID --protocol tcp --port 22 --cidr 0.0.0.0/0   # SSH
+aws ec2 authorize-security-group-ingress --group-id $SECURITY_GROUP_ID --protocol tcp --port 80 --cidr 0.0.0.0/0   # HTTP
+aws ec2 authorize-security-group-ingress --group-id $SECURITY_GROUP_ID --protocol tcp --port 3389 --cidr 0.0.0.0/0  # RDP para servidor Windows
+
+
+# Definir variables
+INSTANCE_TYPE="t2.micro"
+AMI_ID="ami-05f283f34603d6aed"  # ID de la imatge Windows
+KEY_NAME="vockey"
+SECURITY_GROUP="$SECURITY_GROUP_ID"  # ID del grup de seguretat
+
+# Llançar una nova instància
+aws ec2 run-instances \
+    --image-id $AMI_ID \
+    --count 1 \
+    --instance-type $INSTANCE_TYPE \
+    --key-name $KEY_NAME \
+    --security-group-ids $SECURITY_GROUP \
+    --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=WindowsServer}]'
+
+
+
+
+DOMAINNAME=$1
+
+#Verifiquem que el client no ha posat mes de 10 usuaris
+
+if [ $# -gt 11 ];then
+        echo "El nombre d'usuaris ha de ser menys de 10"
+        exit 1
+fi
+
+shift
+
+#Ens guardem les variables de usuari i contrasenya 
+
+while [ $# -gt 0 ]
+do
+        USER=$(echo $1 | cut -d "," -f1)
+        PSWD=$(echo $1 | cut -d "," -f2)
+
+
+        echo $USER $PSWD
+
+        shift
+done
+
+```
