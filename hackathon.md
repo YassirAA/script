@@ -147,6 +147,8 @@ done
 
 Hem avançat en la creaccio del grup de seguretat i aconseguir crearlo adjuntanment amb la maquina virtual i posar el grup de seguretat a la maquina virtual
 De moment tenim 3 reglas de ports oberts, el port de ssh(22), el port 80 de HTTP i el RDP(3389) tambe he separat en un script la creacio del windows server, el que fai es demanar el nom del grup primer i despres el nom de la maquina
+![image](https://github.com/user-attachments/assets/81937121-7a78-490e-922e-a5936b51d157)
+
 ``` bash
 #Crear security group 
 SECURITY_GROUP_ID=$(aws ec2 create-security-group --group-name "$1" --description "Seguridad para hackathon" --query 'GroupId' --output text)
