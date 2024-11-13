@@ -146,12 +146,10 @@ done
 ```
 
 Hem avançat en la creaccio del grup de seguretat i aconseguir crearlo adjuntanment amb la maquina virtual i posar el grup de seguretat a la maquina virtual
-De moment tenim 3 reglas de ports oberts, el port de ssh(22), el port 80 de HTTP i el RDP(3389)
+De moment tenim 3 reglas de ports oberts, el port de ssh(22), el port 80 de HTTP i el RDP(3389) tambe he separat en un script la creacio del windows server, el que fai es demanar el nom del grup primer i despres el nom de la maquina
 ``` bash
-! /bin/sh
-
 #Crear security group 
-SECURITY_GROUP_ID=$(aws ec2 create-security-group --group-name "security-group" --description "Seguridad para hackathon" --query 'GroupId' --output text)
+SECURITY_GROUP_ID=$(aws ec2 create-security-group --group-name "$1" --description "Seguridad para hackathon" --query 'GroupId' --output text)
 
 
 # Añadir reglas de acceso al grupo de seguridad
@@ -173,33 +171,7 @@ aws ec2 run-instances \
     --instance-type $INSTANCE_TYPE \
     --key-name $KEY_NAME \
     --security-group-ids $SECURITY_GROUP \
-    --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=WindowsServer}]'
-
-
-
-
-DOMAINNAME=$1
-
-#Verifiquem que el client no ha posat mes de 10 usuaris
-
-if [ $# -gt 11 ];then
-        echo "El nombre d'usuaris ha de ser menys de 10"
-        exit 1
-fi
-
-shift
-
-#Ens guardem les variables de usuari i contrasenya 
-
-while [ $# -gt 0 ]
-do
-        USER=$(echo $1 | cut -d "," -f1)
-        PSWD=$(echo $1 | cut -d "," -f2)
-
-
-        echo $USER $PSWD
-
-        shift
-done
+    --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value='$2'}]'
 
 ```
+
