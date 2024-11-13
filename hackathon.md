@@ -179,3 +179,4 @@ aws ec2 run-instances \
 
 ```
 
+Ara aplicarem el nostre script de maquinas linux la seva creacio
