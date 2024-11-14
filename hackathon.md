@@ -181,7 +181,7 @@ aws ec2 run-instances \
 
 Ara aplicarem el nostre script de maquinas linux la seva creacio primer estem declaren les variables amb la informacio de la maquina virtual
 ``` bash
-Informacions dels Linux per la creacio de la maquina virtal
+# Informacions dels Linux per la creacio de la maquina virtal
 REGION="us-east-1"
 AMI_ID="ami-064519b8c76274859"
 INSTANCE_TYPE="t2.micro"
