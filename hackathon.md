@@ -191,4 +191,47 @@ SECURITY_GROUP_ID="sg-09897034353e50cc6"
 
 Ara hem descrobert que per crear la maquina virtual es pot fer directament, pero per crear els usuaris que ens demana l'usuari ens hem de connectar per ssh.
 
+Primer farem un bucle que creara les instancies que ens demana l'usuari i a dintre crearem els usuaris necesaris despres d'agafar la ip de la instancia creada per el ssh, i aixis fins que el bucle de les maquinas acabi, i ja tindriem els clients debian creats.
 
+``` bash
+#! /bin/sh
+
+#Script creacio usuaris Linux
+
+NUMINST=$1
+
+#Verifiquem que el client no ha posat mes de 10 usuaris
+
+if [ $NUMINST -gt 10 ];then
+        echo "El nombre d'instancies ha de ser menys de 10"
+        exit 1
+fi
+
+shift
+
+while [ $NUMINST -gt 0 ];then
+
+#Informacions dels Linux per la creacio de la maquina virtal
+REGION="us-east-1"
+AMI_ID="ami-064519b8c76274859"
+INSTANCE_TYPE="t2.micro"
+KEY_NAME="vockey"
+SECURITY_GROUP_ID="sg-09897034353e50cc6"
+
+# Ens guardem les variables de usuari i contrasenya
+
+
+
+while [ $# -gt 1 ]
+do
+        USER=$(echo $1 | cut -d "," -f1)
+        PSWD=$(echo $1 | cut -d "," -f2)
+
+
+
+        echo $USER $PSWD
+
+        shift
+done
+
+```
