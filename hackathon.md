@@ -194,9 +194,7 @@ Ara hem descrobert que per crear la maquina virtual es pot fer directament, pero
 Primer farem un bucle que creara les instancies que ens demana l'usuari i a dintre crearem els usuaris necesaris despres d'agafar la ip de la instancia creada per el ssh, i aixis fins que el bucle de les maquinas acabi, i ja tindriem els clients debian creats.
 
 ``` bash
-#! /bin/sh
-
-#Script creacio usuaris Linux
+bin/sh
 
 NUMINST=$1
 
@@ -209,8 +207,8 @@ fi
 
 shift
 
-while [ $NUMINST -gt 0 ];then
-
+while [ $NUMINST -gt 0 ]    
+do
 #Informacions dels Linux per la creacio de la maquina virtal
 REGION="us-east-1"
 AMI_ID="ami-064519b8c76274859"
@@ -233,5 +231,8 @@ do
 
         shift
 done
+
+done
+
 
 ```
