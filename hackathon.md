@@ -236,3 +236,5 @@ done
 
 
 ```
+
+Ens falta crear la maquina dintre del bucle i extreure la ip per les comandes de ssh
